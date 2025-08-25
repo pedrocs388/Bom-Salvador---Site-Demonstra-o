@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bom-Salvador - Experiência Gastronômica</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --color-primary: #2c3e50;
+            --color-secondary: #c96;
+            --color-accent: #e74c3c;
+            --color-light: #f9f9f9;
+            --color-dark: #2c3e50;
+            --color-text: #333;
+            --shadow: 0 5px 25px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+            background-color: var(--color-light);
+        }
+        
+        .cursive {
+            font-family: 'Dancing Script', cursive;
+        }
+        
+        .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        h1, h2, h3, h4 {
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: var(--color-secondary);
+            color: white;
+            border: none;
+            border-radius: 0;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .btn:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--color-primary);
+            z-index: -2;
+        }
+        
+        .btn:before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: var(--color-dark);
+            transition: all 0.3s;
+            z-index: -1;
+        }
+        
+        .btn:hover {
+            color: #fff;
+        }
+        
+        .btn:hover:before {
+            width: 100%;
+        }
+        
+        .btn-whatsapp {
+            background: #25D366;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+        
+        .btn-whatsapp:hover {
+            background: #128C7E;
+        }
+        
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+        
+        .section-title .cursive {
+            font-size: 3.2rem;
+            color: var(--color-secondary);
+            display: block;
+            margin-top: -15px;
+            margin-bottom: 20px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--color-secondary);
+        }
+        
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(249, 249, 249, 0.95);
+            padding: 20px 0;
+            transition: var(--transition);
+            box-shadow: var(--shadow);
+        }
+        
+        header.scrolled {
+            padding: 15px 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        
+        .logo .cursive {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+        }
+        
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            font-size: 1.1rem;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--color-secondary);
+            transition: var(--transition);
+        }
+        
+        .nav-link:hover {
+            color: var(--color-secondary);
+        }
+        
+        .nav-link:hover:after {
+            width: 100%;
+        }
+        
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.8rem;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80') no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-content h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            font-weight: 300;
+        }
+        
+        .hero-content .cursive {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 10px;
+            color: var(--color-secondary);
+        }
+        
+        .hero-content p {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* About */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+            color: var(--color-primary);
+            font-weight: 300;
+        }
+        
+        .about-text h3 .cursive {
+            font-size: 2.5rem;
+            color: var(--color-secondary);
+        }
+        
+        .about-text p {
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+        
+        .about-img {
+            position: relative;
+        }
+        
+        .about-img:before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--color-secondary);
+            z-index: -1;
+        }
+        
+        /* Menu */
+        .menu {
+            background: var(--color-light);
+        }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+        }
+        
+        .menu-item {
+            background: white;
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-10px);
+        }
+        
+        .menu-img {
+            height: 240px;
+            width: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+        
+        .menu-item:hover .menu-img {
+            transform: scale(1.05);
+        }
+        
+        .menu-content {
+            padding: 25px;
+        }
+        
+        .menu-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+            font-weight: 400;
+        }
+        
+        .menu-content p {
+            margin-bottom: 20px;
+            color: #777;
+        }
+        
+        .price {
+            font-weight: 700;
+            color: var(--color-secondary);
+            font-size: 1.4rem;
+            display: block;
+            text-align: right;
+        }
+        
+        /* Testimonials */
+        .testimonials-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 40px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            position: relative;
+            text-align: center;
+        }
+        
+        .testimonial:before {
+            content: """;
+            font-family: 'Playfair Display', serif;
+            font-size: 8rem;
+            color: var(--color-secondary);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            opacity: 0.2;
+            line-height: 1;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            margin-bottom: 25px;
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+        
+        .client {
+            font-weight: 700;
+            color: var(--color-primary);
+            font-size: 1.1rem;
+        }
+        
+        /* Contact */
+        .contact {
+            background: white;
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            color: var(--color-primary);
+            font-weight: 400;
+        }
+        
+        .contact-info h3 .cursive {
+            font-size: 2rem;
+            color: var(--color-secondary);
+        }
+        
+        .contact-details {
+            margin-bottom: 40px;
+        }
+        
+        .contact-details p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-details i {
+            width: 25px;
+            color: var(--color-secondary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: var(--color-primary);
+            color: white;
+            border-radius: 0;
+            transition: var(--transition);
+            font-size: 1.2rem;
+        }
+        
+        .social-links a:hover {
+            background: var(--color-secondary);
+            transform: translateY(-5px);
+        }
+        
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 25px;
+            border: 1px solid #ddd;
+            border-radius: 0;
+            font-size: 1rem;
+            font-family: 'Raleway', sans-serif;
+            transition: var(--transition);
+        }
+        
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--color-secondary);
+        }
+        
+        .contact-form textarea {
+            min-height: 180px;
+            resize: vertical;
+        }
+        
+        /* Map */
+        .map {
+            height: 450px;
+            margin-top: 60px;
+            box-shadow: var(--shadow);
+        }
+        
+        .map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--color-primary);
+            color: white;
+            padding: 80px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+            font-weight: 400;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--color-secondary);
+        }
+        
+        .opening-hours p {
+            margin-bottom: 8px;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+            text-align: center;
+            font-size: 1rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-content h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero-content .cursive {
+                font-size: 4rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                right: -100%;
+                background: white;
+                width: 280px;
+                height: calc(100vh - 80px);
+                flex-direction: column;
+                padding: 50px;
+                box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+                transition: 0.4s;
+            }
+            
+            .nav-menu.active {
+                right: 0;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title .cursive {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero-content .cursive {
+                font-size: 3.2rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container navbar">
+            <a href="#" class="logo">Bom-<span class="cursive">Salvador</span></a>
+            
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="#home" class="nav-link">Início</a></li>
+                    <li><a href="#about" class="nav-link">Sobre</a></li>
+                    <li><a href="#menu" class="nav-link">Pratos</a></li>
+                    <li><a href="#testimonials" class="nav-link">Avaliações</a></li>
+                    <li><a href="#contact" class="nav-link">Contato</a></li>
+                </ul>
+            </nav>
+            
+            <div class="hamburger">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <span class="cursive">Bem-vindo ao</span>
+            <h1>Bom-<span class="cursive">Salvador</span></h1>
+            <p>Experiência gastronômica única com sabores autênticos da culinária baiana em um ambiente acolhedor.</p>
+            <a href="#menu" class="btn">Ver Cardápio</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Sobre Nós</h2>
+                <span class="cursive">Nossa história</span>
+            </div>
+            
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Uma jornada de <span class="cursive">sabores</span></h3>
+                    <p>Há mais de 15 anos, o Bom-Salvador traz o autêntico sabor da Bahia para São Paulo. Nossa paixão pela culinária baiana nos inspirou a criar um espaço onde tradição e sofisticação se encontram.</p>
+                    <p>Nossos pratos são preparados com ingredientes frescos e selecionados, seguindo receitas tradicionais que honram a rica herança cultural da culinária baiana.</p>
+                    <p>Venha desfrutar de uma experiência gastronômica única em um ambiente aconchegante e acolhedor, perfeito para refeições em família, jantares românticos e encontros entre amigos.</p>
+                    <a href="#contact" class="btn">Faça sua reserva</a>
+                </div>
+                
+                <div class="about-img">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8cmVzdGF1cmFudCUyMGludGVyaW9yfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Interior do restaurante Bom-Salvador">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu">
+        <div class="container">
+            <div class="section-title">
+                <h2>Pratos Especiais</h2>
+                <span class="cursive">Nossas especialidades</span>
+            </div>
+            
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1630918037678-a8f7e0f9c9c6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vcXVlY2F8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Moqueca de Peixe" class="menu-img">
+                    <div class="menu-content">
+                        <h3>Moqueca de Peixe</h3>
+                        <p>Peixe fresco cozido em panela de barro com azeite de dendê, leite de coco, cebola, tomate e pimentão.</p>
+                        <span class="price">R$ 89,90</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1621841957884-1212fe583d5c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWNhcmFqJUMzJUklQzMlQTF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60" alt="Acarajé" class="menu-img">
+                    <div class="menu-content">
+                        <h3>Acarajé</h3>
+                        <p>Bolinho de feijão-fradinho frito no azeite de dendê, recheado com vatapá, caruru, camarão e pimenta.</p>
+                        <span class="price">R$ 24,90</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJvYiVDMyVGM3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Bobó de Camarão" class="menu-img">
+                    <div class="menu-content">
+                        <h3>Bobó de Camarão</h3>
+                        <p>Camarões refogados em um creme de mandioca temperado com azeite de dendê e leite de coco.</p>
+                        <span class="price">R$ 79,90</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1585036156171-384164a8c675?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fHZhdGFwJUMzJUExfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Vatapá" class="menu-img">
+                    <div class="menu-content">
+                        <h3>Vatapá</h3>
+                        <p>Creme feito com pão, amendoim, castanha de caju, leite de coco e azeite de dendê, servido com arroz.</p>
+                        <span class="price">R$ 49,90</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1595295332309-171b69bfa9e6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGFiYXJhJUMzJUExfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60" alt="Abará" class="menu-img">
+                    <div class="menu-content">
+                        <h3>Abará</h3>
+                        <p>Massa de feijão-fradinho temperada e envolta em folha de bananeira, cozida no vapor.</p>
+                        <span class="price">R$ 19,90</span>
+                    </div>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGNvY2FkYXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="Cocada" class="menu-img">
+                    <div class="menu-content">
+                        <h3>Cocada</h3>
+                        <p>Doce tradicional feito com coco fresco, perfeito para finalizar a refeição com um toque especial.</p>
+                        <span class="price">R$ 9,90</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Avaliações</h2>
+                <span class="cursive">O que dizem nossos clientes</span>
+            </div>
+            
+            <div class="testimonials-container">
+                <div class="testimonial">
+                    <p>"A moqueca de peixe é simplesmente divina! O sabor me transportou direto para a Bahia. Ambiente aconchegante e atendimento impecável. Voltaremos em breve!"</p>
+                    <span class="client">- Maria Silva</span>
+                </div>
+                
+                <div class="testimonial">
+                    <p>"O melhor acarajé que já comi fora da Bahia! Ingredientes frescos e sabor autêntico. Já me tornei cliente fiel do Bom-Salvador. Recomendo a todos!"</p>
+                    <span class="client">- João Santos</span>
+                </div>
+                
+                <div class="testimonial">
+                    <p>"Perfeito para um jantar especial. A combinação de sabores, o ambiente e o atendimento fazem do Bom-Salvador meu restaurante preferido. Uma verdadeira experiência gastronômica!"</p>
+                    <span class="client">- Ana Costa</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Entre em Contato</h2>
+                <span class="cursive">Reserve sua mesa</span>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Informações de <span class="cursive">Contato</span></h3>
+                    
+                    <div class="contact-details">
+                        <p><i class="fas fa-map-marker-alt"></i> Rua das Flores, 123 - Jardim Paulista, São Paulo</p>
+                        <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                        <p><i class="fas fa-envelope"></i> contato@bomsalvador.com.br</p>
+                    </div>
+                    
+                    <h3>Horário de <span class="cursive">Funcionamento</span></h3>
+                    <div class="opening-hours">
+                        <p>Segunda a Quinta: 11h às 15h | 18h às 23h</p>
+                        <p>Sexta e Sábado: 11h às 16h | 18h às 00h</p>
+                        <p>Domingo: 11h às 17h</p>
+                    </div>
+                    
+                    <h3>Siga-<span class="cursive">nós</span></h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                    
+                    <a href="https://wa.me/551134567890" class="btn btn-whatsapp" style="margin-top: 30px;">
+                        <i class="fab fa-whatsapp"></i> Chamar no WhatsApp
+                    </a>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <input type="text" placeholder="Seu nome" required>
+                        <input type="email" placeholder="Seu e-mail" required>
+                        <input type="tel" placeholder="Seu telefone">
+                        <textarea placeholder="Sua mensagem" required></textarea>
+                        <button type="submit" class="btn">Enviar Mensagem</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="map">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.0754267452926!2d-46.65342658502166!3d-23.565734367639153!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce59c8da0aa315%3A0xd59f9431f2c9776a!2sAv.%20Paulista%2C%20S%C3%A3o%20Paulo%20-%20SP!5e0!3m2!1spt-BR!2sbr!4v1652978512314!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Bom-<span class="cursive">Salvador</span></h3>
+                    <p>O autêntico sabor da Bahia no coração de São Paulo. Uma experiência gastronômica única que celebra a rica cultura baiana.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Links <span class="cursive">Rápidos</span></h3>
+                    <ul>
+                        <li><a href="#home">Início</a></li>
+                        <li><a href="#about">Sobre</a></li>
+                        <li><a href="#menu">Cardápio</a></li>
+                        <li><a href="#contact">Contato</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Entre em <span class="cursive">Contato</span></h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua das Flores, 123 - SP</p>
+                    <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> contato@bomsalvador.com.br</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 Bom-Salvador Restaurante. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        hamburger.addEventListener('click', function() {
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close mobile menu when clicking on a link
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
